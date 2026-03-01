@@ -2674,7 +2674,7 @@ void TDraw::draw(const Spacer* item, Painter* painter, const PaintOptions& opt)
 
     auto conf = item->configuration();
 
-    Pen pen(item->selected() ? conf->selectionColor() : conf->formattingColor(), item->spatium()* 0.3);
+    Pen pen(item->selected() ? conf->selectionColor() : conf->formattingColor(), item->spatium() * 0.3);
 
     painter->setPen(pen);
     painter->setBrush(BrushStyle::NoBrush);
@@ -3062,6 +3062,9 @@ void TDraw::draw(const TieSegment* item, Painter* painter, const PaintOptions& o
 {
     TRACE_DRAW_ITEM;
 
+    painter->save();
+    setMask(item, painter);
+
     // hide tie toward the second chord of a cross-measure value
     if (item->tie()->endNote() && item->tie()->endNote()->chord()->crossMeasure() == CrossMeasure::SECOND) {
         return;
@@ -3107,6 +3110,8 @@ void TDraw::draw(const TieSegment* item, Painter* painter, const PaintOptions& o
     }
     painter->setPen(pen);
     painter->drawPath(item->ldata()->path());
+
+    painter->restore();
 }
 
 void TDraw::draw(const TimeSig* item, Painter* painter, const PaintOptions& opt)
