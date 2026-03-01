@@ -45,6 +45,7 @@ class SlursAndTiesPageModel : public AbstractStyleDialogModel
     Q_PROPERTY(StyleItem * tieDotsPlacement READ tieDotsPlacement CONSTANT)
     Q_PROPERTY(StyleItem * minLaissezVibLength READ minLaissezVibLength CONSTANT)
     Q_PROPERTY(StyleItem * laissezVibUseSmuflSym READ laissezVibUseSmuflSym CONSTANT)
+    Q_PROPERTY(StyleItem * maskTiesOverTimeAndKeySignatures READ maskTiesOverTimeAndKeySignatures CONSTANT)
 
 public:
     explicit SlursAndTiesPageModel(QObject* parent = nullptr);
@@ -65,5 +66,6 @@ public:
     StyleItem* tieDotsPlacement() const;
     StyleItem* minLaissezVibLength() const;
     StyleItem* laissezVibUseSmuflSym() const;
+    StyleItem* maskTiesOverTimeAndKeySignatures() const;
 };
 }

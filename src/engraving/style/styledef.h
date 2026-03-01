@@ -33,13 +33,13 @@ namespace mu::engraving {
 // Needs to be duplicated here and in symid.h since moc doesn't handle macros from #include'd files
 #ifdef SCRIPT_INTERFACE
 #define BEGIN_QT_REGISTERED_ENUM(Name) \
-    class MSQE_##Name { \
-        Q_GADGET \
-    public:
+        class MSQE_##Name { \
+            Q_GADGET \
+        public:
 #define END_QT_REGISTERED_ENUM(Name) \
-    Q_ENUM(Name); \
-}; \
-    using Name = MSQE_##Name::Name;
+        Q_ENUM(Name); \
+        }; \
+        using Name = MSQE_##Name::Name;
 #else
 #define BEGIN_QT_REGISTERED_ENUM(Name)
 #define END_QT_REGISTERED_ENUM(Name)
@@ -580,6 +580,7 @@ enum class Sid {
     minWigglyGlissandoLength,
     slurMinDistance,
     tieMinDistance,
+    maskTiesOverTimeAndKeySignatures,
     laissezVibMinDistance,
     headerToLineStartDistance,   // determines start point of "dangling" lines (ties, gliss, lyrics...) when preceded by header clefs/timesigs/keysigs
     lineEndToBarlineDistance,  // determines end point of "dangling" lines (ties, gliss, lyrics...) in relation to barlines
